@@ -13,7 +13,7 @@ namespace IntroWithAbstractClass
 
     public class Instructor : Person, IInstruct
     {
-        public Instructor(string firstName, string lastName, int heightInCm, Eye[] eyes, string? nickName) : base(firstName, lastName, heightInCm, eyes, nickName) { }
+        public Instructor(string firstName, string lastName, int heightInCm, Eye[] eyes, string nickName = "") : base(firstName, lastName, heightInCm, eyes, nickName) { }
 
         public override string FullName => $"{this.FirstName} {this.LastName}";
 

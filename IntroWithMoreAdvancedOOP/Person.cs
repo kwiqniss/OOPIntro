@@ -34,7 +34,7 @@
 
         public int HeightInCm { get; set; }
 
-        public Person(string firstName, string lastName, int heightInCm, string? nickName)
+        public Person(string firstName, string lastName, int heightInCm, string nickName = "")
         {
             this.FirstName = firstName;
             this.LastName = lastName;

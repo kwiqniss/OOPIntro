@@ -28,7 +28,8 @@
         // Here, our Person is actually comprised of many other objects. These can be thought of as components. The idea is that an object consists of a number of components. Each component is an object too. Note, that the Eye itself might consist of additional components.
         public Eye[] Eyes { get; }
 
-        public Person(string firstName, string lastName, int heightInCm, Eye[] eyes, string? nickName)
+        // The following bit of code has a parameter at the end of the signature that has a default value in case the caller doesn't provide one. It is an optional parameter.
+        public Person(string firstName, string lastName, int heightInCm, Eye[] eyes, string nickName = "")
         {
             this.FirstName = firstName;
             this.LastName = lastName;

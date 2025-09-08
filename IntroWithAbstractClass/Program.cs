@@ -56,7 +56,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             var students = new Student[]
             {
                 new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD"),
-                new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes, "Sammy")
+                new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes) // notice, we didn't provide a nickname. Because the Student constructor has a default value for the nickname parameter, we can choose to provide it or not.
             };
 
             foreach (var s in students)
