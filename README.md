@@ -1,5 +1,5 @@
 # OOPIntro
-Code samples included. [Video demonstration](https://youtu.be/3pgkPaWx4DE)
+Code samples included. [Video demonstration](https://youtu.be/6cQaLeHo4CU)
 
 Code sample was updated after the vid to 
 - include info on using the public setter for NickName and displaying the updated introduction:
