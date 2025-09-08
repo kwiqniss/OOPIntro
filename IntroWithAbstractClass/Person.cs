@@ -25,11 +25,15 @@
 
         public int HeightInCm { get; set; }
 
-        public Person(string firstName, string lastName, int heightInCm, string? nickName)
+        // Here, our Person is actually comprised of many other objects. These can be thought of as components. The idea is that an object consists of a number of components. Each component is an object too. Note, that the Eye itself might consist of additional components.
+        public Eye[] Eyes { get; }
+
+        public Person(string firstName, string lastName, int heightInCm, Eye[] eyes, string? nickName)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.HeightInCm = heightInCm;
+            this.Eyes = eyes;
             this.NickName = nickName;
         }
 
