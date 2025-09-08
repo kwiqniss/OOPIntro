@@ -1,5 +1,4 @@
-﻿
-namespace IntroWithInterface
+﻿namespace IntroWithInterface
 {
     internal class Program
     {
