@@ -20,6 +20,9 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             student.Speak();
             instructor.Listen("");
 
+            student.NickName = "Janey";
+            student.Speak();
+
             student.PrepareToReceiveInstruction();
             instructor.Instruct(Message);
             student.ReceiveInstruction(Message);

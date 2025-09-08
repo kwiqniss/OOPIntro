@@ -16,19 +16,19 @@
 
         public string LastName { get; private set; }
 
-        //public string FullName => $"{this.FirstName} {(string.IsNullOrWhiteSpace(this.NickName) ? "" : $"'{this.NickName}' ")}{this.LastName}";
-        public string FullName
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(this.NickName))
-                {
-                    return $"{this.FirstName} {this.LastName}";
-                }
+        public string FullName => $"{this.FirstName} {(string.IsNullOrWhiteSpace(this.NickName) ? "" : $"'{this.NickName}' ")}{this.LastName}";
+        //public string FullName
+        //{
+        //    get
+        //    {
+        //        if (string.IsNullOrWhiteSpace(this.NickName))
+        //        {
+        //            return $"{this.FirstName} {this.LastName}";
+        //        }
 
-                return $"{this.FirstName} '{this.NickName}' {this.LastName}";
-            }
-        }
+        //        return $"{this.FirstName} '{this.NickName}' {this.LastName}";
+        //    }
+        //}
 
         public string NickName { get; set; }
 

@@ -11,7 +11,8 @@ namespace IntroWithAbstractClass
         Freshman,
         Sophomore,
         Junior,
-        Senior
+        Senior,
+        PostGrad
 
         // the above is equivalent to: 
         //Freshman = 0,

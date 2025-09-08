@@ -24,8 +24,8 @@ namespace IntroWithAbstractClass
 
         public void Instruct(string message)
         {
-            this.Speak();
             Console.WriteLine("Instructor is instructing the class...");
+            this.Speak();
             Console.WriteLine(message);
             Console.WriteLine("Instructor has finished instructing the class.");
         }

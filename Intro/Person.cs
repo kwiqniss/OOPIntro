@@ -21,8 +21,8 @@
             {
                 if (string.IsNullOrWhiteSpace(this.NickName))
                 {
-                    return this._firstName + this.LastName;
-                    //return $"{this._firstName} {this.LastName}";
+                    //return this._firstName + this.LastName;
+                    return $"{this._firstName} {this.LastName}";
                 }
 
                 return this._firstName + " '" + this.NickName + "' " + this.LastName;
