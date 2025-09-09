@@ -139,7 +139,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
         /// </summary>
         /// <param name="userPrompt">This will be the prompt displayed to the user.</param>
         /// <returns>The input from the user, after it's confirmed to be valid</returns>
-        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentException">Thrown if the userPrompt is null or empty</exception>
         private static VersionToCall GetValidVersionInputFromUserWithDoWhile(string userPrompt)
         {
             if (string.IsNullOrWhiteSpace(userPrompt))
