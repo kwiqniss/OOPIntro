@@ -31,7 +31,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
 
         /// <summary>
-        /// This is the scenario where you'll see private types (classes, enums...) We're only using them from this class, so it might as well be in the class.
+        /// This is the scenario where you'll see private types (classes, enums...) We're only using VersionToCall from this class, so it might as well be in the class.
         /// </summary>
         private enum VersionToCall
         {
