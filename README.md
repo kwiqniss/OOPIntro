@@ -35,6 +35,7 @@ Class:
 A 'class' is a special keyword in many programming languages. It is how we describe what an object will look like (what properties and or methods it has). You create an instance of an object which is described in its 'class' using the 'new' keyword.
 
 "has a"
+
   Properties
 	Our basketball goal really does care about what the inner diamater of the pole is. Our pole will have a property called height and another called outerDiameter. 
 	
@@ -42,7 +43,8 @@ A 'class' is a special keyword in many programming languages. It is how we descr
 	Methods are things our object can do. Let's say we have an object called console. A simple Console may just perform 2 tasks. It can get input and show output. You've done this already in python. So, it will have a method that could be called getInput() and another called showOutput(). In C#, this is the Console class's Readline and Writeline methods.
 
 "Is a"
-	"is a" relationships are important to classes to. If you have a class named Person each instance of those objects "is a" Person. 
+
+  "is a" relationships are important to classes to. If you have a class named Person each instance of those objects "is a" Person. 
 	You might create several instances of a Person class. There could be an instance named Bob (meaning it's stored in a variable or property with the variable name Bob. Bob is an instance of Person.
 	Sometimes, we want to be more specific in our types of objects though. We might have Student and Instructor that are more specific objects. They're both a Person, so they have a lot of things in common, but they also have additional properties and methods that aren't available from the other. For example, an Instructor might have a method called Instruct() that wouldn't make since to have on all instances of Person, since it's only available for Instructors. Similarly, students might have a ReceiveInstruction() method. 
 	So we have 3 separate classes: Person, Student, and Instructor.
