@@ -12,7 +12,7 @@ Also:
 - var is a shortcut in c#. It decides what type the variable is (based on the return type of the method or object on the right side of the assignment is.) It's different than dynamic. Don't use dynamic.
 
 ***
-OOP Intro
+OOP Intro: 
 
 Objects are a natural way to understand code organization and enable a better separation of concerns in your code. Having code organized with their corresponding objects helps readability, reusability, and maintainability of a project. 
 
@@ -20,25 +20,23 @@ Could you imagine a team of 30 people all trying to work on and edit the same fi
 
 But it helps to really keep a single concern in mind when working on each piece of your code. So, instead of simply separating them into different files, we're identifying the different objects in our design. Imagine we have a Basketball Goal. That's an object. It's also comprised of other objects, like a backboard, brackets, mounting hardware, a rim, and a net. Objects are how we organize like-code, not just within our file system, but within how we think about our code itself. 
 
-***Objects:
+***
+Objects: 
 Every object has properties that describe it, and/or things it can do. These are called properties, and methods… (You may have heard methods referred to as functions. Those are synonymous terms.) 
 This is the "has a" pattern. An object "has" or is composed of several components (which are themselves other objects)
 	- Objects will typically "have" their own local variables and functions that callers outside of the object don't need to know about. 
 	- They will also "have" properties and/or methods that callers outside of the object do need to know about. 
 
-***Class
+***
+Class: 
 A 'class' is a special keyword in many programming languages. It is how we describe what an object will look like (what properties and or methods it has). You create an instance of an object which is described in its 'class' using the 'new' keyword.
 
-
 "has a"
-	Properties
+  Properties
 	Our basketball goal really does care about what the inner diamater of the pole is. Our pole will have a property called height and another called outerDiameter. 
 	
   Methods
 	Methods are things our object can do. Let's say we have an object called console. A simple Console may just perform 2 tasks. It can get input and show output. You've done this already in python. So, it will have a method that could be called getInput() and another called showOutput(). In C#, this is the Console class's Readline and Writeline methods.
-
-
----
 
 "Is a"
 	"is a" relationships are important to classes to. If you have a class named Person each instance of those objects "is a" Person. 
@@ -53,23 +51,28 @@ When we have an instance of a Student, we can get the property values and call T
 	'Runtime exceptions' occur after the app is started, while it's running and can be difficult to reproduce or troubleshoot once they do reproduce. 
 If we try to call the Student's Talk() method while ReceiveInstruction is running we'll cause an InterruptionException. (interrupts are actually a thing, but they're not about exceptions. Different, much more advanced topic. Here, I'm using it metaphorically.)
 
-***Access Modifiers
-Scope: 
+***
+Access Modifiers & Scope:  
 
 Variables have scopes. If they're defined within a function, then only code within that function can see that it exists. If you define a variable locally  in a class it's only available within the class, unless the class makes it something other than private. Sometimes private and public are inferred if they're not specified, so it's best to always set your "Accessibility modifiers" specifically to avoid unexpected results.
 
-***Static vs instance
+***
+Static vs instance: 
+
 You might have several objects created at the same time from the same class, but those are separate "instances" of the 'object' (which is described by its 'class') 
 Sometimes, every instance of an object from a specific class will have the same value. Some values are unique to each instance. Let's say you have a person. If a person had a genus and species properties, every single human today would have homo and sapien values. So, if we have a person object we might say that the genus and species are all the same, so they're static. Then we could call Person.Genus and Person.Species without needing an instance of Person. But our Height and name properties are unique to each instance, so we do have to create an instance of person to call those methods.
 Console methods are static. That's why we don't need to create a new instance of the console to call them. 
 
-***constructor
+***
+constructor: 
+
 This code defines what information is needed to create an instance of the class.
 A person object's constructor might accept initial values for height, name, etc that may or may not be changed later in runtime, depending on the behavior specified within the class.
 
-***Interface 
-interface and class are similar. 
+***
+Interface: 
 
+interface and class are similar. 
 Classes can 'implement' an interface or several interfaces.
 
 The difference is Interfaces simply state that everything that implements this interface will have 
@@ -82,7 +85,9 @@ You cannot create a 'new' interface. You can only create instances of an object 
 
 You might have a class named Paper and another interface in our example called IGradePapers that defines a function named GradePaper and accepts a Paper object. 
 
-***abstract classes
+***
+abstract classes: 
+
 It's a combination of interface and class.
 
 They're similar to interfaces and classes can extend an abstract-class similar to the way they can 'implement' an interface. 
@@ -95,7 +100,9 @@ When a class extends an abstract class it must implement the methods and propert
 
 You cannot create an instance of an abstract class. You can only create instances of class objects.
 
-***enum
+***
+enum: 
+
 Similar to class, but very specific. It simply stores a finite list of available choices.
 
 You might have an Enum called GradeLevel. Then the GradeLevel enum would say that you can either be:
@@ -108,13 +115,18 @@ And that's the entire enum.
 
 An enum stores a number in the background and the name of the property we define is just a more human readable version of that number. In the example above: Freshman is assigned the value of 0, Sophomore is 1, etc. We can manually specific what numbers map to which property names if we choose though. 
 
+***
+Privacy:
+
 Classes don't like when other objects touch things they don't need to know about, so they only expose a property's getter or setter if you allow it. You can have a public getter and a private setter for example.
 
 An object does not need to know everything about a classes inner variables and functions. A class should only expose methods and properties that the caller needs. 
 For example:
 An object does not need to know whether the Full Name property on our Person class is just an amalgimation of First and Last Name or if it's based on some other logic, such as the person's nick name + last name instead of first name plus last name. All the outside object cares about is what's the person's name (or user name, etc…)
 
-*** const and readonly
+*** 
+const and readonly:
+
 Constant values can't be changed once the app is compiled.
 Readonly values can't be changed once they're created in runtime. Many times we'll have a constructor that accepts the initial value for a readonly variable. Property's with exposed get but a private set are very similar to, and often backed by a readonly variable.
 
