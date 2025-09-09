@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        private const string Message = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        private const string INSTRUCTOR_MESSAGE = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
@@ -29,28 +29,28 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
         {
             Console.WriteLine("Hello " + Person.Genus + " " + Person.Species);
 
-            Student student = new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD");
-            var student2 = new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes, "Sammy");
+            //Student student = new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD");
+            //var student2 = new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes, "Sammy");
             //var students = new Student[] { student, student2 }; // this would work to create our student array, but it would be unusual to declare the student and student2 variables and immediately put them in an array since that's creating variables that are only used once and it's on the next line, so there's no reason for the overhead of creatin a variable. See sample below.
 
-            Instructor instructor = new Instructor("Robert", "Singer", 185, RobertsEyes, "Bobby");
+            //Instructor instructor = new Instructor("Robert", "Singer", 185, RobertsEyes, "Bobby");
 
-            instructor.Speak();
-            student.Listen("");
-            student2.Listen("");
+            //instructor.Speak();
+            //student.Listen("");
+            //student2.Listen("");
 
-            student.Speak();
-            student2.Speak();
-            instructor.Listen("");
+            //student.Speak();
+            //student2.Speak();
+            //instructor.Listen("");
 
-            student.NickName = "Janey";
-            student.Speak();
+            //student.NickName = "Janey";
+            //student.Speak();
 
-            student.PrepareToReceiveInstruction();
-            student2.PrepareToReceiveInstruction();
-            instructor.Instruct(Message);
-            student.ReceiveInstruction(Message);
-            student2.ReceiveInstruction(Message);
+            //student.PrepareToReceiveInstruction();
+            //student2.PrepareToReceiveInstruction();
+            //instructor.Instruct(Message);
+            //student.ReceiveInstruction(Message);
+            //student2.ReceiveInstruction(Message);
 
             // a better way to do that would be to have a collection of students, and loop through them instead of being so redundant.
             var students = new Student[]
@@ -59,16 +59,23 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
                 new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes) // notice, we didn't provide a nickname. Because the Student constructor has a default value for the nickname parameter, we can choose to provide it or not.
             };
 
-            foreach (var s in students)
+            foreach (var student in students) // student variable is reassigned after each loop, to the next student in the array. It starts with the one at Index 0 and then Index 1...
+            {
+                student.Speak();
+            }
+
+            Instructor instructor = new Instructor("Robert", "Singer", 185, RobertsEyes, "Bobby");
+
+            foreach (var s in students) 
             {
                 s.PrepareToReceiveInstruction();
             }
 
-            instructor.Instruct(Message);
+            instructor.Instruct(INSTRUCTOR_MESSAGE); // in the future, maybe we'll pass the students array to the instructor's constructor. Then the Instructor can deliver the message directly to the students.
 
             foreach (var s in students)
             {
-                s.ReceiveInstruction(Message);
+                s.ReceiveInstruction(INSTRUCTOR_MESSAGE);
             }
 
             Console.WriteLine();

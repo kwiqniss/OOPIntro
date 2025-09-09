@@ -1,4 +1,6 @@
-﻿namespace IntroWithAbstractClass
+﻿using System.Diagnostics;
+
+namespace IntroWithAbstractClass
 {
     public interface IAmAPerson
     {
@@ -52,13 +54,43 @@
         }
 
         // no one outside of this class should care how I take my notes, or that I do. They tell us to listen, then we decide what to do with that information.
-        private void writeNote(string message)
+        private void writeNote(string? message)
         {
-            Console.WriteLine($"Writing a note... {message}.");
+            // Debug messages only occur when you're debugging.
+            // If you run without debugging, these messages don't go anywhere; that's what logging is for, which is a topic for another date.
+            // If you don't see the output, use visual studio's search, or the View category, to find "Output" and open the Output window. Then Show output from "Debug" in the dropdown of the output window, which by default will appear at the bottom of the editor. 
+            Debug.WriteLine(
+                string.IsNullOrWhiteSpace(message)
+                    ? "You told me to write a note, but you didn't tell me what to write." // this is the if part
+                    : $"I {this.FullName} am writing a note that says exactly what you told me... {message}."); // this is the else part
+
+            /// Write a different message if it's empty or whitespace at the end of our string. Let's write notes in the Debug output instead of Console.
+            //if (!string.IsNullOrWhiteSpace(message))
+            //{
+            //    Debug.WriteLine($"Writing a note... {message}.");
+            //}
+            //else
+            //{
+            //    Debug.WriteLine("You told me to write a note, but you didn't tell me what to write.");
+            //}
+
+            /// the conditional operator (?:) is a ternary operator. It takes three operands. The first is a condition to evaluate. If that condition is true, the second operand is returned. If the condition is false, the third operand is returned.
+            //string.IsNullOrWhiteSpace(message) ? Debug.WriteLine("You told me to write a note, but you didn't tell me what to write.") : Debug.WriteLine($"Writing a note... {message}.");
+
+            /// This is the same as the previous line, but broken into two steps for clarity. It creates a variable unnecessarily though.
+            //var messageToWrite = string.IsNullOrWhiteSpace(message)? "You told me to write a note, but you didn't tell me what to write." : $"Writing a note... {message}.";
+            //Debug.WriteLine(messageToWrite);
+
+            /// Really basic Do nothing if it's null. Write a message to the console otherwise, even if it's empty or whitespace at the end of our string.
+            //if (message is null)
+            //{
+            //    return; // or log it, or throw exception, or set a default... etc.`
+            //}
+            //Console.WriteLine($"Writing a note... {message}.");
         }
 
         // no one else needs to know whether we think what they're saying is important, unless we decide to tell them.
-        private bool isImportant(string message)
+        private bool isImportant(string? message)
         {
             return !string.IsNullOrWhiteSpace(message);
         }

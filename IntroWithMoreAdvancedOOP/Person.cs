@@ -49,7 +49,7 @@
 
         public void Listen()
         {
-            var message = Console.ReadLine(); 
+            var message = Console.ReadLine();
             if (isImportant(message))
             {
                 this.writeNote(message);
@@ -57,13 +57,13 @@
         }
 
         // no one outside of this class should care how I take my notes, or that I do. They tell us to listen, then we decide what to do with that information.
-        private void writeNote(string message)
+        private void writeNote(string? message)
         {
             Console.WriteLine($"Writing a note... {message}.");
         }
 
         // no one else needs to know whether we think what they're saying is important, unless we decide to tell them.
-        private bool isImportant(string message)
+        private bool isImportant(string? message)
         {
             return !string.IsNullOrWhiteSpace(message);
         }
