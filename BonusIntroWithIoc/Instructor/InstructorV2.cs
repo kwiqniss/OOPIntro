@@ -6,9 +6,9 @@ namespace BonusIntroWithIoc.Instructor
     public class InstructorV2 : Person, IInstruct
     {
         //private readonly ICollection<StudentV2> _students;
-        private ICollection<Student.Student> _students; // we could make a private property that returns the students, but unless either the getter or setter is exposed, that's unusual. Instead, we'll use a class level private variable.
+        private ICollection<IReceiveInstruction> _students; // we could make a private property that returns the students, but unless either the getter or setter is exposed, that's unusual. Instead, we'll use a class level private variable.
 
-        public InstructorV2(string firstName, string lastName, int heightInCm, Eye[] eyes, ICollection<Student.Student> students, string nickName = "") : base(firstName, lastName, heightInCm, eyes, nickName) 
+        public InstructorV2(string firstName, string lastName, int heightInCm, Eye[] eyes, ICollection<IReceiveInstruction> students, string nickName = "") : base(firstName, lastName, heightInCm, eyes, nickName) 
         {
             _students = students;
         }
@@ -20,7 +20,7 @@ namespace BonusIntroWithIoc.Instructor
             Console.WriteLine("Instructor is listening carefully...");
         }
         
-        public void UpdatePresentStudents(ICollection<Student.Student> students)
+        public void UpdatePresentStudents(ICollection<IReceiveInstruction> students)
         {
             _students = students;
 

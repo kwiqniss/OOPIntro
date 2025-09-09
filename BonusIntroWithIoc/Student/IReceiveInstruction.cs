@@ -4,5 +4,6 @@
     {
         void InstructionStarting();
         void InstructionInProgress(string message);
+        void InstructionComplete();
     }
 }
