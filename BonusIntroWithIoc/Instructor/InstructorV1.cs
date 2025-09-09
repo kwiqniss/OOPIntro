@@ -1,4 +1,5 @@
 ﻿using BonusIntroWithIoc.PersonComponents;
+using BonusIntroWithIoc.Student;
 
 namespace BonusIntroWithIoc.Instructor
 {
@@ -19,6 +20,11 @@ namespace BonusIntroWithIoc.Instructor
             GiveIntroduction();
             Console.WriteLine(message);
             Console.WriteLine("Instructor has finished instructing the class.");
+        }
+
+        public void UpdatePresentStudents(ICollection<IReceiveInstruction> students)
+        {
+            // This version of the Instructor does not keep track of students, so this method does nothing.
         }
     }
 }

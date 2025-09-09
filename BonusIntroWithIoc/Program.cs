@@ -211,7 +211,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
                 new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes)
             };
             
-            var instructor = new InstructorV2("Robert", "Singer", 185, RobertsEyes, students, "Bobby");
+            IInstruct instructor = new InstructorV2("Robert", "Singer", 185, RobertsEyes, students, "Bobby");
             instructor.Instruct(INSTRUCTOR_MESSAGE);
         }
 
