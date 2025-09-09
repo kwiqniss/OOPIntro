@@ -63,38 +63,6 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             CallSpecifiedVersion(versionToCall);
         }
 
-        private static void CallSpecifiedVersion(VersionToCall versionToCall)
-        {
-            // since we're simply comparing a set of strings, enums, ints... to a set of available options, we can use a switch statements instead of if/else if/else.
-            // This is a cleaner way to express the same logic.
-            switch (versionToCall)
-            {
-                case VersionToCall.V1:
-                    MainV1();
-                    break;
-                case VersionToCall.V2:
-                    MainV2();
-                    break;
-                default:
-                    Console.WriteLine("No valid version selected.");
-                    break;
-            }
-
-            //// this is an if / else if / if statement. 
-            //if (versionToCall == VersionToCall.V1)
-            //{
-            //    MainV1();
-            //}
-            //else if (versionToCall == VersionToCall.V2)
-            //{
-            //    MainV2();
-            //}
-            //else
-            //{
-            //    Console.WriteLine("No valid version selected.");
-            //}
-        }
-
         private static VersionToCall DetermineVersionToCall(string userPrompt, string[]? args = null) // by using the ? here, we can use null as default instead of an empty array.
         {
             var versionToCall = VersionToCall.Unknown;
@@ -131,7 +99,6 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             return VersionToCall.Unknown;
         }
 
-        // This method isn't exactly the same as the dowhile version, as I've updated the Do While version.
         /// <summary>
         /// unused. See the version of this method that uses a do/while loop instead of a while loop.
         /// </summary>
@@ -157,7 +124,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
         //        Console.WriteLine(userPrompt);
         //        userInput = Console.ReadLine();
         //        versionToCall = ConvertUserInputToVersion(userInput);
-                
+
         //        loopCounter++;
         //    } 
 
@@ -198,6 +165,38 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             } while (versionToCall == VersionToCall.Unknown); 
             
             return versionToCall; 
+        }
+
+        private static void CallSpecifiedVersion(VersionToCall versionToCall)
+        {
+            // since we're simply comparing a set of strings, enums, ints... to a set of available options, we can use a switch statements instead of if/else if/else.
+            // This is a cleaner way to express the same logic.
+            switch (versionToCall)
+            {
+                case VersionToCall.V1:
+                    MainV1();
+                    break;
+                case VersionToCall.V2:
+                    MainV2();
+                    break;
+                default:
+                    Console.WriteLine("No valid version selected.");
+                    break;
+            }
+
+            //// this is an if / else if / if statement. 
+            //if (versionToCall == VersionToCall.V1)
+            //{
+            //    MainV1();
+            //}
+            //else if (versionToCall == VersionToCall.V2)
+            //{
+            //    MainV2();
+            //}
+            //else
+            //{
+            //    Console.WriteLine("No valid version selected.");
+            //}
         }
 
         private static void MainV2() 
