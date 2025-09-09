@@ -9,4 +9,4 @@ Also:
 
 - the Message string uses the @ symbol followed by quotes. This is a multi-line literal. Whitespace, including new lines, are preserved.
 
-- var is a shortcut in c#. It decides what type the variable is (based on the return type of the method or object on the right side of the assignment is. It's different than dynamic. Don't use dynamic.
+- var is a shortcut in c#. It decides what type the variable is (based on the return type of the method or object on the right side of the assignment is.) It's different than dynamic. Don't use dynamic.
