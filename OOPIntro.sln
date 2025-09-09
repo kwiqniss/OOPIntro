@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroWithAbstractClass", "I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroWithInterface", "IntroWithInterface\IntroWithInterface.csproj", "{30C31492-8A82-2B48-7715-DACC949C99BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BonusIntroWithIoc", "BonusIntroWithIoc\BonusIntroWithIoc.csproj", "{DC5345ED-8F31-46E2-8490-FA18F5D59357}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{30C31492-8A82-2B48-7715-DACC949C99BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30C31492-8A82-2B48-7715-DACC949C99BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30C31492-8A82-2B48-7715-DACC949C99BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC5345ED-8F31-46E2-8490-FA18F5D59357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC5345ED-8F31-46E2-8490-FA18F5D59357}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC5345ED-8F31-46E2-8490-FA18F5D59357}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC5345ED-8F31-46E2-8490-FA18F5D59357}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
