@@ -23,7 +23,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             new Eye(System.Drawing.Color.Green, 25, 33, Position.Right)
         };
 
-        private readonly static Eye[] RobertsEyes = new Eye[]
+        private readonly static Eye[] RobertsEyes = // because we know the types in the collection, we know the type that's being created and can remove the "new Eye[]" part of the declaration and initialization of the array.
         {
             new Eye(System.Drawing.Color.Blue, 26, 34, Position.Left),
             new Eye(System.Drawing.Color.Blue, 26, 34, Position.Right)
