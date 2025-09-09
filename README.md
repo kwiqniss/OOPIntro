@@ -23,6 +23,7 @@ But it helps to really keep a single concern in mind when working on each piece 
 
 ***
 Objects: 
+
 Every object has properties that describe it, and/or things it can do. These are called properties, and methods… (You may have heard methods referred to as functions. Those are synonymous terms.) 
 This is the "has a" pattern. An object "has" or is composed of several components (which are themselves other objects)
 	- Objects will typically "have" their own local variables and functions that callers outside of the object don't need to know about. 
