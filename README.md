@@ -31,6 +31,7 @@ This is the "has a" pattern. An object "has" or is composed of several component
 
 ***
 Class: 
+
 A 'class' is a special keyword in many programming languages. It is how we describe what an object will look like (what properties and or methods it has). You create an instance of an object which is described in its 'class' using the 'new' keyword.
 
 "has a"
