@@ -37,7 +37,7 @@ A 'class' is a special keyword in many programming languages. It is how we descr
 "has a"
 
   Properties
-	Our basketball goal really does care about what the inner diamater of the pole is. Our pole will have a property called height and another called outerDiameter. 
+	Our basketball goal really doesn't care about what the inner diamater of the pole is. Our pole will have a property called height and another called outerDiameter that the basktball goal will want to know about.
 	
   Methods
 	Methods are things our object can do. Let's say we have an object called console. A simple Console may just perform 2 tasks. It can get input and show output. You've done this already in python. So, it will have a method that could be called getInput() and another called showOutput(). In C#, this is the Console class's Readline and Writeline methods.
