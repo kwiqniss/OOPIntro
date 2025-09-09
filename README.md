@@ -54,7 +54,8 @@ When we have an instance of a Student, we can get the property values and call T
 If we try to call the Student's Talk() method while ReceiveInstruction is running we'll cause an InterruptionException. (interrupts are actually a thing, but they're not about exceptions. Different, much more advanced topic. Here, I'm using it metaphorically.)
 
 ***Access Modifiers
-Scope 
+Scope: 
+
 Variables have scopes. If they're defined within a function, then only code within that function can see that it exists. If you define a variable locally  in a class it's only available within the class, unless the class makes it something other than private. Sometimes private and public are inferred if they're not specified, so it's best to always set your "Accessibility modifiers" specifically to avoid unexpected results.
 
 ***Static vs instance
