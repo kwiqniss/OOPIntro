@@ -1,5 +1,5 @@
-<img width="1095" height="431" alt="image" src="https://github.com/user-attachments/assets/97b8a86f-937b-415c-a2c7-f965961ca8ad" /># OOPIntro
-Code samples included. [Video demonstration](https://youtu.be/6cQaLeHo4CU)
+Code samples included.
+[Video demonstration](https://youtu.be/6cQaLeHo4CU)
 
 Errata: 
 - colon is the symbol for extends/implements (not semi-colon) 
@@ -59,7 +59,7 @@ Variables have scopes. If they're defined within a function, then only code with
 
 ***Static vs instance
 You might have several objects created at the same time from the same class, but those are separate "instances" of the 'object' (which is described by its 'class') 
-Sometimes, every instance of an object from a specific class will have the same value. Some values are unique to each instance. Let's say you have a person. If a person had a genus and species properties, every single human today would have homo and sapien values. So, if we have a person object we might say that the genus and species are all the same, so they're static. Then we could call Person.Genus and Person.Species without needing an instance of Person. But our Height and name properties are unique to each instance, so we do have to create an instance of person to call those methods.<img width="1102" height="243" alt="image" src="https://github.com/user-attachments/assets/a430d618-a3b9-4880-9bc7-f5216301fb44" />
+Sometimes, every instance of an object from a specific class will have the same value. Some values are unique to each instance. Let's say you have a person. If a person had a genus and species properties, every single human today would have homo and sapien values. So, if we have a person object we might say that the genus and species are all the same, so they're static. Then we could call Person.Genus and Person.Species without needing an instance of Person. But our Height and name properties are unique to each instance, so we do have to create an instance of person to call those methods.
 Console methods are static. That's why we don't need to create a new instance of the console to call them. 
 
 ***constructor
