@@ -29,6 +29,10 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             new Eye(System.Drawing.Color.Blue, 26, 34, Position.Right)
         };
 
+
+        /// <summary>
+        /// This is the scenario where you'll see private types (classes, enums...) We're only using them from this class, so it might as well be in the class.
+        /// </summary>
         private enum VersionToCall
         {
             V1 = 1,
