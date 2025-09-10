@@ -45,7 +45,9 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             //var userWantsToGoAgain = false; // we could've tracked whether the user wants to go again by assigning to this variable each loop, but there's no need to create a variable for this when we can simply place the condition in the while statement.
             do
             {
-                MainLoop(args);
+                CallSpecifiedVersion(
+                    VersionHandler.DetermineVersionToCall("Please enter the version to call (v1 or v2): ", args));
+
                 Console.WriteLine("Want to go again? y/n");
 
             } while (
@@ -57,13 +59,6 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             Console.WriteLine(); // let's leave a blank line before the exit message to make it easier to read.
             Console.WriteLine("press any key to exit...");
             Console.Read();
-        }
-
-        static void MainLoop(string[] args)
-        {
-            // let's figure out the version to call, call it, then prompt the user to exit the program.
-            var userPrompt = "Please enter the version to call (v1 or v2): ";
-            CallSpecifiedVersion(VersionHandler.DetermineVersionToCall(userPrompt, args));
         }
 
         internal static void CallSpecifiedVersion(VersionToCall versionToCall)
