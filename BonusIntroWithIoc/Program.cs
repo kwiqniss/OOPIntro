@@ -52,9 +52,9 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
             } while (
                 string.Equals(
-                    Console.ReadLine()
-                    , "y"
-                    , StringComparison.OrdinalIgnoreCase)); // sets the userWantsToGoAgain variable to true if the user types "y" or "Y", otherwise false.);
+                    Console.ReadLine()                      // gets the input from the user as a string.
+                    , "y"                                   // compares the user input to "y"
+                    , StringComparison.OrdinalIgnoreCase)); // ignore casing differences
 
             Console.WriteLine(); // let's leave a blank line before the exit message to make it easier to read.
             Console.WriteLine("press any key to exit...");
