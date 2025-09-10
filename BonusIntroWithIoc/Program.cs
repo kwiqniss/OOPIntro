@@ -210,7 +210,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
         private static void MainV2() 
         {
-            var students = new Student[]
+            IReceiveInstruction[] students = new Student[]
             {
                 new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD"),
                 new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes)
