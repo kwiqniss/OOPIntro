@@ -8,7 +8,7 @@ namespace OopIntroLib.Instructor
         //private readonly ICollection<IReceiveInstruction> _students;
         private ICollection<IReceiveInstruction> _students; // we could make a private property that returns the students, but unless either the getter or setter is exposed, that's unusual. Instead, we'll use a class level private variable.
 
-        public InstructorV2(string firstName, string lastName, int heightInCm, Eye[] eyes, ICollection<IReceiveInstruction> students, string nickName = "") : base(firstName, lastName, heightInCm, eyes, nickName) 
+        public InstructorV2(string firstName, string lastName, int heightInCm, Eye[] eyes, ICollection<IReceiveInstruction> students, string nickName = "") : base(firstName, lastName, heightInCm, eyes, nickName)
         {
             _students = students;
         }
@@ -19,7 +19,7 @@ namespace OopIntroLib.Instructor
         {
             Console.WriteLine("Instructor is listening carefully...");
         }
-        
+
         public void UpdatePresentStudents(ICollection<IReceiveInstruction> students) // ICollection is the interface for arrays and various other types of collctions.
         {
             _students = students;
@@ -48,32 +48,45 @@ namespace OopIntroLib.Instructor
                 return; // No students to instruct, so exit early.
             }
 
-            GiveIntroduction();
-
             Console.WriteLine("Instructor is allowing the students warning to prepare for receiving instruction...");
+            this.WarnStudentsToPrepare();
+            Console.WriteLine();
+
+            Console.WriteLine("Instructor is instructing the class...");
+            this.GiveIntroduction();
+            this.DeliverInstruction(message);
+            Console.WriteLine();
+
+            Console.WriteLine("Instructor has finished instructing the class.");
+            this.DismissStudents();
+            Console.WriteLine();
+        }
+
+        private void WarnStudentsToPrepare()
+        {
+            this.Speak("Class is starting soon, please prepare to receive instruction.");
             foreach (var student in _students)
             {
                 student.InstructionStarting();
             }
+        }
 
-            Console.WriteLine("Instructor is instructing the class...");
-            
+        private void DeliverInstruction(string message)
+        {
             this.Speak(message);
-            Console.WriteLine(); //blank line for console output
-
             foreach (var student in _students)
             {
                 student.InstructionInProgress(message);
             }
+        }
 
-            Console.WriteLine("Instructor has finished instructing the class.");
-            Console.WriteLine();
+        private void DismissStudents()
+        {
+            this.Speak("Class dismissed.");
             foreach (var student in _students)
             {
                 student.InstructionComplete();
             }
-            
-            Console.WriteLine(string.Empty); // string.Empty is equivalent to "" Using it here to add a blank line in the console output after the instruction is complete.
         }
     }
 }
