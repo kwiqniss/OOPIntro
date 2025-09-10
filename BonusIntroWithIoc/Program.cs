@@ -1,6 +1,7 @@
 ﻿// the BonusIntroWithIocAndProjRef project uses a project ref to include the classes from our OopIntroLib project.
 // Right click a project to add references to other projects. The OopIntroLib is a class library project rather than a console app.
 // Class libraries produce a DLL rather than an EXE like a console app does..
+using BonusIntroWithIocAndProjRef;
 using OopIntroLib.Instructor; 
 using OopIntroLib.PersonComponents;
 using OopIntroLib.Student;
@@ -15,6 +16,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
+        // we can initialize class variables here too. It doesn't always have to be set in the constructor separately.
         private readonly static Eye[] JanesEyes = new Eye[]
         {
             new Eye(Color.Brown, 24, 32, Position.Left),
@@ -34,16 +36,6 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             new Eye(Color.Blue, 26, 34, Position.Left),
             new Eye(Color.Blue, 26, 34, Position.Right)
         };
-
-        /// <summary>
-        /// This is the scenario where you'll see private types (classes, enums...) We're only using VersionToCall from this class, so it might as well be in the class.
-        /// </summary>
-        private enum VersionToCall
-        {
-            V1 = 1,
-            V2 = 2,
-            Unknown = 0
-        }
 
         static void Main(string[] args)
         {
@@ -71,103 +63,10 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
         {
             // let's figure out the version to call, call it, then prompt the user to exit the program.
             var userPrompt = "Please enter the version to call (v1 or v2): ";
-            var versionToCall = DetermineVersionToCall(userPrompt, args);
-            CallSpecifiedVersion(versionToCall);
+            CallSpecifiedVersion(VersionHandler.DetermineVersionToCall(userPrompt, args));
         }
 
-        private static void MainV2()
-        {
-            IReceiveInstruction[] students = new Student[]
-            {
-                new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD"),
-                new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes)
-            };
-
-            IInstruct instructor = new InstructorV2("Robert", "Singer", 185, RobertsEyes, students, "Bobby");
-            instructor.Instruct(INSTRUCTOR_MESSAGE);
-        }
-
-        private static VersionToCall DetermineVersionToCall(string userPrompt, string[]? args = null) // by using the ? here, we can use null as default instead of an empty array.
-        {
-            var versionToCall = VersionToCall.Unknown;
-
-            // the question mark makes sure args was provided and isn't null before we try to access its Length property.
-            // Separately, maybe there is a way we could do this using .Any() instead of comparing length? We'd still need to make sure args isn't null first though.
-            // comparable to:
-            //   if (args != null && args.Length > 0)
-            if (args?.Length > 0) 
-            {
-                versionToCall = ConvertUserInputToVersion(args[0]);
-            }
-
-            if (versionToCall == VersionToCall.Unknown)
-            {
-                versionToCall = GetValidVersionInputFromUser(userPrompt);
-            }
-
-            return versionToCall;
-        }
-
-        private static VersionToCall ConvertUserInputToVersion(string? input)
-        {
-            if (!string.IsNullOrWhiteSpace(input))
-            {
-                // let's see if the user entered 1, v1, V1, 2, v2, or V2. If they did, return the appropriate enum value. Otherwise, return Unknown.
-
-                if (input == 
-                    ((int)VersionToCall.V1).ToString() // this is similar to input == "1", but if we ever change the enum value, this will automatically update too. We're casting the enum to its base value of an int. Then we call ToString() to convert the int to a string for comparison since input from the console is always a string.
-                    || string.Equals(input, VersionToCall.V1.ToString(), StringComparison.OrdinalIgnoreCase)) // this part compares the string when the user types 'v' before the version number. We're comparing to the string representation of the enum value and ignoring differences in casing.
-                {
-                    return VersionToCall.V1;
-                }
-                else if (input ==
-                    ((int)VersionToCall.V2).ToString() // this part compares the string when the user typed an integer only; we grab the backing int value of the enum and convert it to a string for comparison since input from the console is always a string. Just like the V1 part above.
-                    || string.Equals(input, VersionToCall.V2.ToString(), StringComparison.OrdinalIgnoreCase)) // similar to input == "v2" || input == "V2", except we're ignoring any potential differences in casing (upper/lower). Just like the V1 part above.
-                {
-                    return VersionToCall.V2;
-                }
-            }
-            
-            return VersionToCall.Unknown;
-        }
-
-        /// <summary>
-        /// We know we're going to prompt the user at least once, so we can use a do/while loop instead of a while loop to indicate that.
-        /// </summary>
-        /// <param name="userPrompt">This will be the prompt displayed to the user.</param>
-        /// <returns>The input from the user, after it's confirmed to be valid</returns>
-        /// <exception cref="ArgumentException">Thrown if the userPrompt is null or empty</exception>
-        private static VersionToCall GetValidVersionInputFromUser(string userPrompt)
-        {
-            if (string.IsNullOrWhiteSpace(userPrompt))
-            {
-                throw new ArgumentException("userPrompt cannot be null, empty, or whitespace.", nameof(userPrompt));
-            }
-
-            var userInput = string.Empty;
-            var versionToCall = VersionToCall.Unknown;
-            var isRetry = false;
-
-            do
-            {
-                if (isRetry)
-                {
-                    Console.WriteLine("Invalid input. Please try again.");
-                }
-
-                isRetry = true; // unless input is valid, then every subsequent attempt is a retry.
-
-                Console.WriteLine(userPrompt);
-                userInput = Console.ReadLine();
-                
-                versionToCall = ConvertUserInputToVersion(userInput);
-
-            } while (versionToCall == VersionToCall.Unknown); 
-            
-            return versionToCall; 
-        }
-
-        private static void CallSpecifiedVersion(VersionToCall versionToCall)
+        internal static void CallSpecifiedVersion(VersionToCall versionToCall)
         {
             // since we're simply comparing a set of strings, enums, ints... to a set of available options, we can use a switch statements instead of if/else if/else.
             // This is a cleaner way to express the same logic.
@@ -197,6 +96,18 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             //{
             //    Console.WriteLine("No valid version selected.");
             //}
+        }
+
+        private static void MainV2()
+        {
+            IReceiveInstruction[] students = new Student[]
+            {
+                new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD"),
+                new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes)
+            };
+
+            IInstruct instructor = new InstructorV2("Robert", "Singer", 185, RobertsEyes, students, "Bobby");
+            instructor.Instruct(INSTRUCTOR_MESSAGE);
         }
 
         private static void MainV1()
@@ -243,37 +154,5 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
                 s.InstructionInProgress(INSTRUCTOR_MESSAGE);
             }
         }
-
-        /// <summary>
-        /// unused. See the version of this method that uses a do/while loop instead of a while loop.
-        /// </summary>
-        /// <param name="userPrompt">This will be the prompt displayed to the user.</param>
-        /// <returns>The input from the user, after it's confirmed to be valid</returns>
-        /// <exception cref="ArgumentException"></exception>
-        //private static VersionToCall GetValidVersionInputFromUserWithWhileInsteadOfDoWhile(string userPrompt)
-        //{
-        //    if (string.IsNullOrWhiteSpace(userPrompt))
-        //    {
-        //        throw new ArgumentException("userPrompt cannot be null, empty, or whitespace.", nameof(userPrompt));
-        //    }
-
-        //    var versionToCall = VersionToCall.Unknown; // this is the variable we'll return at the end of the method. We update it from within the while loop.
-        //    var userInput = string.Empty;
-        //    var loopCounter = 0;
-        //    while (versionToCall == VersionToCall.Unknown)
-        //    {
-        //        if (loopCounter > 0)
-        //        {
-        //            Console.WriteLine("Invalid input. Please try again.");
-        //        }
-        //        Console.WriteLine(userPrompt);
-        //        userInput = Console.ReadLine();
-        //        versionToCall = ConvertUserInputToVersion(userInput);
-
-        //        loopCounter++;
-        //    } 
-
-        //    return versionToCall; 
-        //}
     }
 }
