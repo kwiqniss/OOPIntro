@@ -239,7 +239,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
         /// <param name="userPrompt">This will be the prompt displayed to the user.</param>
         /// <returns>The input from the user, after it's confirmed to be valid</returns>
         /// <exception cref="ArgumentException"></exception>
-        //private static VersionToCall GetValidVersionInputFromUserWithWhile(string userPrompt)
+        //private static VersionToCall GetValidVersionInputFromUserWithWhileInsteadOfDoWhile(string userPrompt)
         //{
         //    if (string.IsNullOrWhiteSpace(userPrompt))
         //    {
