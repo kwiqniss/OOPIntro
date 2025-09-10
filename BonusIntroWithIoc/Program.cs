@@ -144,7 +144,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
                     Console.WriteLine("Invalid input. Please try again.");
                 }
 
-                isRetry = true; // unless this is valid, then every subsequent attempt is a retry.
+                isRetry = true; // unless input is valid, then every subsequent attempt is a retry.
 
                 Console.WriteLine(userPrompt);
                 userInput = Console.ReadLine();
