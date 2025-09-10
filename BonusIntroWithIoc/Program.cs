@@ -105,6 +105,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             //}
         }
 
+        // old, deprecated main version kept for reference. You might see versioning and deprecated stuff that's kept around because other code depends on it, and we can't update everything at once.
         private static void MainV1()
         {
             var people = new IAmAPerson[]
