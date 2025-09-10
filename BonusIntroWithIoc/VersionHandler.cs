@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OopIntroLib.Logger;
+using OopIntroLib.UserInput;
 
 namespace BonusIntroWithIocAndProjRef
 {
@@ -16,7 +13,15 @@ namespace BonusIntroWithIocAndProjRef
 
     internal class VersionHandler
     {
-        internal static VersionToCall DetermineVersionToCall(string userPrompt, string[]? args = null) // by using the ? here, we can use null as default instead of an empty array.
+        private readonly ICaptureInput _inputCapture;
+        private readonly ILogger? _logger;
+
+        internal VersionHandler(ICaptureInput inputCapture, ILogger? logger = null)
+        {
+            _inputCapture = inputCapture;
+            _logger = logger;
+        }
+        internal VersionToCall DetermineVersionToCall(string userPrompt, string[]? args = null) // by using the ? here, we can use null as default instead of an empty array.
         {
             var versionToCall = VersionToCall.Unknown;
 
@@ -37,7 +42,7 @@ namespace BonusIntroWithIocAndProjRef
             return versionToCall;
         }
 
-        internal static VersionToCall ConvertUserInputToVersion(string? input)
+        internal VersionToCall ConvertUserInputToVersion(string? input)
         {
             if (!string.IsNullOrWhiteSpace(input))
             {
@@ -66,7 +71,7 @@ namespace BonusIntroWithIocAndProjRef
         /// <param name="userPrompt">This will be the prompt displayed to the user.</param>
         /// <returns>The input from the user, after it's confirmed to be valid</returns>
         /// <exception cref="ArgumentException">Thrown if the userPrompt is null or empty</exception>
-        internal static VersionToCall GetValidVersionInputFromUser(string userPrompt)
+        internal VersionToCall GetValidVersionInputFromUser(string userPrompt)
         {
             if (string.IsNullOrWhiteSpace(userPrompt))
             {
@@ -81,13 +86,13 @@ namespace BonusIntroWithIocAndProjRef
             {
                 if (isRetry)
                 {
-                    Console.WriteLine("Invalid input. Please try again.");
+                    this._logger?.WriteLine("Invalid input. Please try again.");
                 }
 
                 isRetry = true; // unless input is valid, then every subsequent attempt is a retry.
 
-                Console.WriteLine(userPrompt);
-                userInput = Console.ReadLine();
+                this._logger?.WriteLine(userPrompt);
+                userInput = _inputCapture.ReadLine(userPrompt);
 
                 versionToCall = ConvertUserInputToVersion(userInput);
 

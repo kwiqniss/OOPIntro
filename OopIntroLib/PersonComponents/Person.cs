@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using OopIntroLib.Logger;
 
 namespace OopIntroLib.PersonComponents
 {
@@ -16,7 +16,12 @@ namespace OopIntroLib.PersonComponents
     public abstract class Person : IAmAPerson
     {
         public static string Genus => "Homo";
+
         public static string Species => "Sapien";
+
+        private ILogger? _logger { get; set; }
+
+        private ILogger? _notebook { get; set; }
 
         public string FirstName { get; private set; }
 
@@ -32,13 +37,22 @@ namespace OopIntroLib.PersonComponents
         public Eye[] Eyes { get; }
 
         // The following bit of code has a parameter at the end of the signature that has a default value in case the caller doesn't provide one. It is an optional parameter. For the default to be null, the type must be nullable, hence the ? after string.
-        public Person(string firstName, string lastName, int heightInCm, Eye[] eyes, string? nickName = null)
+        public Person(
+            string firstName,
+            string lastName, 
+            int heightInCm, 
+            Eye[] eyes, 
+            string? nickName = null, 
+            ILogger? logger = null, 
+            ILogger? notebook = null)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            HeightInCm = heightInCm;
-            Eyes = eyes;
-            NickName = nickName;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.HeightInCm = heightInCm;
+            this.Eyes = eyes;
+            this.NickName = nickName;
+            this._logger = logger;
+            this._notebook = notebook;
         }
 
         public virtual void GiveIntroduction()
@@ -48,14 +62,14 @@ namespace OopIntroLib.PersonComponents
 
         protected virtual void Speak(string? message) // protected means that people that extend this class can use/override this property, but no one outside of this class or derived classes can use it.
         {
-            Console.WriteLine(message);
+            this._logger?.WriteLine(message);
         }
 
         public virtual void Listen(string? message)
         {
-            if (isImportant(message))
+            if (this.isImportant(message))
             {
-                writeNote(message);
+                this.writeNote(message);
             }
         }
 
@@ -67,13 +81,13 @@ namespace OopIntroLib.PersonComponents
             // If you run without debugging, these messages don't go anywhere; that's what logging is for, which is a topic for another date.
             // If you don't see the output, use visual studio's search, or the View category, to find "Output" and open the Output window. Then Show output from "Debug" in the dropdown of the output window, which by default will appear at the bottom of the editor. 
             // Also: the conditional operator (?:) is a ternary operator. It takes three operands. The first is a condition to evaluate. If that condition is true, the second operand is returned. If the condition is false, the third operand is returned.
-            Debug.WriteLine(
+            this._notebook?.WriteLine(
                 string.IsNullOrWhiteSpace(note)
                     ? "You told me to write a note, but you didn't tell me what to write." // this is the if part
                     : $"{messageForUserToWrite} {note}."); // this is the else part
-            Debug.WriteLine(string.Empty);
+            this._notebook?.WriteLine(string.Empty);
 
-            Console.WriteLine($"{messageForUserToWrite} See debug output for notes."); // let's write a message to the console to say the person took a note, but without including the note so as to keep the output in the console itself more brief.
+            this._logger?.WriteLine($"{messageForUserToWrite} See debug output for notes."); // let's write a message to the logger to say the person took a note, but without including the note so as to keep the output in the logger itself more brief.
 
             /// Write a different message if it's empty or whitespace at the end of our string. Let's write notes in the Debug output instead of Console.
             //if (!string.IsNullOrWhiteSpace(message))

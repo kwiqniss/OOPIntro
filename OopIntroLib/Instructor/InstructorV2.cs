@@ -1,4 +1,5 @@
-﻿using OopIntroLib.PersonComponents;
+﻿using OopIntroLib.Logger;
+using OopIntroLib.PersonComponents;
 using OopIntroLib.Student;
 
 namespace OopIntroLib.Instructor
@@ -8,16 +9,27 @@ namespace OopIntroLib.Instructor
         //private readonly ICollection<IReceiveInstruction> _students;
         private ICollection<IReceiveInstruction> _students; // we could make a private property that returns the students, but unless either the getter or setter is exposed, that's unusual. Instead, we'll use a class level private variable.
 
-        public InstructorV2(string firstName, string lastName, int heightInCm, Eye[] eyes, ICollection<IReceiveInstruction> students, string nickName = "") : base(firstName, lastName, heightInCm, eyes, nickName)
+        private ILogger? _logger;
+
+        public InstructorV2(
+            string firstName, 
+            string lastName, 
+            int heightInCm, 
+            Eye[] eyes, 
+            ICollection<IReceiveInstruction> students, 
+            string nickName = "",
+            ILogger? logger = null) 
+            : base(firstName, lastName, heightInCm, eyes, nickName, logger)
         {
             _students = students;
+            _logger = logger;
         }
 
         public override string FullName => $"{FirstName} {LastName}";
 
         public override void Listen(string? message)
         {
-            Console.WriteLine("Instructor is listening carefully...");
+            this._logger?.WriteLine("Instructor is listening carefully...");
         }
 
         public void UpdatePresentStudents(ICollection<IReceiveInstruction> students) // ICollection is the interface for arrays and various other types of collctions.
@@ -49,25 +61,23 @@ namespace OopIntroLib.Instructor
             }
 
             /// If we weren't "logging" this would've been more readable. I wonder if there's a way to abstract logging with something like an "Attribute" following the "Decorator" pattern from the methods being called? (;
-            /// Or should we "inject" a logger into the constructor like we did with the students and keep doing it the long way? 
-            /// could there be a way to use an attribute but inject the logger into the attribute for the attribute to use?
             //this.WarnStudentsToPrepare();
             //this.GiveIntroduction();
             //this.DeliverInstruction(message);
             //this.DismissStudents();
 
-            Console.WriteLine("Instructor is allowing the students warning to prepare for receiving instruction...");
+            this._logger?.WriteLine("Instructor is allowing the students warning to prepare for receiving instruction...");
             this.WarnStudentsToPrepare();
-            Console.WriteLine();
+            this._logger?.WriteLine();
 
-            Console.WriteLine("Instructor is instructing the class...");
+            this._logger?.WriteLine("Instructor is instructing the class...");
             this.GiveIntroduction();
             this.DeliverInstruction(message);
-            Console.WriteLine();
+            this._logger?.WriteLine();
 
-            Console.WriteLine("Instructor has finished instructing the class.");
+            this._logger?.WriteLine("Instructor has finished instructing the class.");
             this.DismissStudents();
-            Console.WriteLine();
+            this._logger?.WriteLine();
         }
 
         private void WarnStudentsToPrepare()

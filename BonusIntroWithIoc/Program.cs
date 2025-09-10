@@ -2,9 +2,12 @@
 // Right click a project to add references to other projects. The OopIntroLib is a class library project rather than a console app.
 // Class libraries produce a DLL rather than an EXE like a console app does... This program is an exe. The library is a DLL.
 using BonusIntroWithIocAndProjRef;
-using OopIntroLib.Instructor; 
+using OopIntroLib.Instructor;
+using OopIntroLib.Logger;
 using OopIntroLib.PersonComponents;
 using OopIntroLib.Student;
+using OopIntroLib.UserInput;
+using System;
 using System.Drawing;
 
 namespace IntroWithAbstractClass
@@ -37,39 +40,42 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             new Eye(Color.Blue, 26, 34, Position.Right)
         };
 
+        private readonly static ILogger Logger = new ConsoleLogger();
+        private readonly static ILogger Notebook = new DebugLogger();
+        private readonly static ICaptureInput CaptureInput = new CaptureConsoleInput();
+        private readonly static VersionHandler ProgramVersionHandler = new VersionHandler(CaptureInput);
+
         static void Main(string[] args)
         {
             //Console.WriteLine("Hello " + Person.Genus + " " + Person.Species);
-            Console.WriteLine($"Hello { Person.Genus } { Person.Species }");
+            Logger.WriteLine($"Hello { Person.Genus } { Person.Species }");
 
             //var userWantsToGoAgain = false; // we could've tracked whether the user wants to go again by assigning to this variable each loop, but there's no need to create a variable for this when we can simply place the condition in the while statement.
             do
             {
                 CallSpecifiedVersion( // call the following DetermineVersionToCall method and provide the results as an argument to the CallSpecifiedVersion method.
-                    VersionHandler.DetermineVersionToCall("Please enter the version to call (v1 or v2): ", args));
-
-                Console.WriteLine("Want to go again? y/n");
+                    ProgramVersionHandler.DetermineVersionToCall("Please enter the version to call (v1 or v2): ", args));
 
             } while (
                 string.Equals(
-                    Console.ReadLine()                      // gets the input from the user as a string.
-                    , "y"                                   // compares the user input to "y"
-                    , StringComparison.OrdinalIgnoreCase)); // ignore casing differences
+                    CaptureInput.ReadLine("Want to go again? y/n") // gets the input from the user as a string.
+                    , "y"                                          // compares the user input to "y"
+                    , StringComparison.OrdinalIgnoreCase));        // ignore casing differences
 
-            Console.WriteLine(); // let's leave a blank line before the exit message to make it easier to read.
-            Console.WriteLine("press any key to exit...");
-            Console.Read();
+            Logger.WriteLine(); // let's leave a blank line before the exit message to make it easier to read.
+            Logger.WriteLine("press any key to exit...");
+            CaptureInput.Read();
         }
 
         private static void MainV2()
         {
             IReceiveInstruction[] students = new Student[]
             {
-                new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD"),
-                new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes)
+                new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD", Logger, Notebook),
+                new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes, logger:Logger, notebook:Notebook)
             };
 
-            IInstruct instructor = new InstructorV2("Robert", "Singer", 185, RobertsEyes, students, "Bobby");
+            IInstruct instructor = new InstructorV2("Robert", "Singer", 185, RobertsEyes, students, "Bobby", Logger);
             instructor.Instruct(INSTRUCTOR_MESSAGE);
         }
 
@@ -86,7 +92,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
                     MainV2();
                     break;
                 default:
-                    Console.WriteLine("No valid version selected.");
+                    Logger?.WriteLine("No valid version selected.");
                     break;
             }
 
@@ -110,8 +116,8 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
         {
             var people = new IAmAPerson[]
             {
-                new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD"),
-                new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes), // notice, we didn't provide a nickname. Because the Student constructor has a default value for the nickname parameter, we can choose to provide it or not.
+                new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD", Logger, Notebook),
+                new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes, logger:Logger, notebook:Notebook), // notice, we didn't provide a nickname. Because the Student constructor has a default value for the nickname parameter, we can choose to provide it or not. Because the other optional items come after this in the signature, we need to tell the compiler what parameters we're providing by naming them.
                 new InstructorV1("Robert", "Singer", 185, RobertsEyes, "Bobby")
             };
 

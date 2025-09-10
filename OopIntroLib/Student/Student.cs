@@ -1,4 +1,5 @@
-﻿using OopIntroLib.PersonComponents;
+﻿using OopIntroLib.Logger;
+using OopIntroLib.PersonComponents;
 
 namespace OopIntroLib.Student
 {
@@ -19,7 +20,16 @@ namespace OopIntroLib.Student
             }
         }
 
-        public Student(string firstName, string lastName, int heightInCm, GradeLevel gradeLevel, Eye[] eyes, string? nickName = "") : base(firstName, lastName, heightInCm, eyes, nickName)
+        public Student(
+            string firstName, 
+            string lastName, 
+            int heightInCm, 
+            GradeLevel gradeLevel, 
+            Eye[] eyes, 
+            string? nickName = null,
+            ILogger? logger = null,
+            ILogger? notebook = null) 
+            : base(firstName, lastName, heightInCm, eyes, nickName, logger, notebook)
         {
             this.GradeLevel = gradeLevel;
         }
