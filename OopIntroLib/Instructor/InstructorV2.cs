@@ -48,7 +48,7 @@ namespace OopIntroLib.Instructor
                 return; // No students to instruct, so exit early.
             }
 
-            // If we weren't "logging" this would've been more readable. I wonder if there's a way to abstract logging with something like an "Attribute" following the "Decorator" pattern from the methods being called?
+            // If we weren't "logging" this would've been more readable. I wonder if there's a way to abstract logging with something like an "Attribute" following the "Decorator" pattern from the methods being called? Or should we "inject" a logger into the constructor like we did with the students and keep doing it the long way? 
             //this.WarnStudentsToPrepare();
             //this.GiveIntroduction();
             //this.DeliverInstruction(message);
