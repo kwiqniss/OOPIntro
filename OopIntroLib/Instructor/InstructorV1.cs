@@ -25,6 +25,8 @@ namespace OopIntroLib.Instructor
         public void UpdatePresentStudents(ICollection<IReceiveInstruction> students)
         {
             // This version of the Instructor does not keep track of students, so this method does nothing.
+            // What we're doing here is wrong. Never implement an interface unless you are implementing all of its functionality. 
+            // The only thing we could've done to make this worse is to throw a NotImplementedException.
         }
     }
 }
