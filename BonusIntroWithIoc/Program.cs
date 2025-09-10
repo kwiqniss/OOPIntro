@@ -108,12 +108,16 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
         {
             if (!string.IsNullOrWhiteSpace(input))
             {
-                if (input == "1" 
+                // let's see if the user entered 1, v1, V1, 2, v2, or V2. If they did, return the appropriate enum value. Otherwise, return Unknown.
+
+                if (input == 
+                    ((int)VersionToCall.V1).ToString() // this is similar to input == "1", but if we ever change the enum value, this will automatically update too. We're casting the enum to it's base value of an int. Then we call ToString() to convert the int to a string for comparison.
                     || string.Equals(input, VersionToCall.V1.ToString(), StringComparison.OrdinalIgnoreCase)) // similar to string1 == string2, except we're ignoring any potential differences in casing (upper/lower)
                 {
                     return VersionToCall.V1;
                 }
-                else if (input == "2"
+                else if (input ==
+                    ((int)VersionToCall.V2).ToString()
                     || string.Equals(input, VersionToCall.V2.ToString(), StringComparison.OrdinalIgnoreCase))
                 {
                     return VersionToCall.V2;
