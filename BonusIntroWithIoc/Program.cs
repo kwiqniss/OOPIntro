@@ -114,13 +114,13 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
                 if (input == 
                     ((int)VersionToCall.V1).ToString() // this is similar to input == "1", but if we ever change the enum value, this will automatically update too. We're casting the enum to its base value of an int. Then we call ToString() to convert the int to a string for comparison since input from the console is always a string.
-                    || string.Equals(input, VersionToCall.V1.ToString(), StringComparison.OrdinalIgnoreCase)) // similar to string1 == string2, except we're ignoring any potential differences in casing (upper/lower)
+                    || string.Equals(input, VersionToCall.V1.ToString(), StringComparison.OrdinalIgnoreCase)) // this part compares the string when the user types 'v' before the version number. We're comparing to the string representation of the enum value and ignoring differences in casing.
                 {
                     return VersionToCall.V1;
                 }
                 else if (input ==
-                    ((int)VersionToCall.V2).ToString() // this part compares the string when the user typed an integer only; we grab the backing int value of the enum and convert it to a string for comparison since input from the console is always a string.
-                    || string.Equals(input, VersionToCall.V2.ToString(), StringComparison.OrdinalIgnoreCase)) // this part compares the string when the user types 'v' before the version number. We're comparing to the string representation of the enum value and ignoring differences in casing.
+                    ((int)VersionToCall.V2).ToString() // this part compares the string when the user typed an integer only; we grab the backing int value of the enum and convert it to a string for comparison since input from the console is always a string. Just like the V1 part above.
+                    || string.Equals(input, VersionToCall.V2.ToString(), StringComparison.OrdinalIgnoreCase)) // similar to input == "v2" || input == "V2", except we're ignoring any potential differences in casing (upper/lower). Just like the V1 part above.
                 {
                     return VersionToCall.V2;
                 }
