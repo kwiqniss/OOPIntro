@@ -60,6 +60,12 @@ namespace OopIntroLib.Instructor
             Console.WriteLine("Instructor has finished instructing the class.");
             this.DismissStudents();
             Console.WriteLine();
+
+            // If we weren't "logging" this would've been more readable. I wonder if there's a way to abstract logging with something like an "Attribute" following the "Decorator" pattern from the methods being called?
+            //this.WarnStudentsToPrepare();
+            //this.GiveIntroduction();
+            //this.DeliverInstruction(message);
+            //this.DismissStudents();
         }
 
         private void WarnStudentsToPrepare()
