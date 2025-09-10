@@ -27,6 +27,7 @@ namespace OopIntroLib.Instructor
             // This version of the Instructor does not keep track of students, so this method does nothing.
             // What we're doing here is wrong. Never implement an interface unless you are implementing all of its functionality. 
             // The only thing we could've done to make this worse is to throw a NotImplementedException.
+            // Perhaps we should've given a separate interface IUpdateStudents to InstructorV2 to implement in addition to IInstruct.
         }
     }
 }
