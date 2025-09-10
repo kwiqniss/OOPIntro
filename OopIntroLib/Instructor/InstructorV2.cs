@@ -40,15 +40,17 @@ namespace OopIntroLib.Instructor
                 throw new ArgumentException("Instruction message cannot be null or empty.", nameof(message)); // No message to give. We can't instruct without a message, so throw an exception.
             }
 
-            // this is similar to comparing if the length is greater than 0, but .Any is more clear. With some collection types, Length is a method, instead of a property.
-            // Length is a property that's updated as the length changes, for the collection types that have a .Length property.
-            // Calling .Length() method causes the program to loop over the entire collection to count the items, whereas .Any() can determine if there are any items without needing to count them all.
+            /// this is similar to comparing if the length is greater than 0, but .Any is more clear. With some collection types, Length is a method, instead of a property.
+            /// Length is a property that's updated as the length changes, for the collection types that have a .Length property.
+            /// Calling .Length() method causes the program to loop over the entire collection to count the items, whereas .Any() can determine if there are any items without needing to count them all.
             if (_students == null || !_students.Any())
             {
                 return; // No students to instruct, so exit early.
             }
 
-            // If we weren't "logging" this would've been more readable. I wonder if there's a way to abstract logging with something like an "Attribute" following the "Decorator" pattern from the methods being called? Or should we "inject" a logger into the constructor like we did with the students and keep doing it the long way? 
+            /// If we weren't "logging" this would've been more readable. I wonder if there's a way to abstract logging with something like an "Attribute" following the "Decorator" pattern from the methods being called? (;
+            /// Or should we "inject" a logger into the constructor like we did with the students and keep doing it the long way? 
+            /// could there be a way to use an attribute but inject the logger into the attribute for the attribute to use?
             //this.WarnStudentsToPrepare();
             //this.GiveIntroduction();
             //this.DeliverInstruction(message);
