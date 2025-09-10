@@ -20,7 +20,7 @@ namespace OopIntroLib.Instructor
             Console.WriteLine("Instructor is listening carefully...");
         }
         
-        public void UpdatePresentStudents(ICollection<IReceiveInstruction> students)
+        public void UpdatePresentStudents(ICollection<IReceiveInstruction> students) // ICollection is the interface for arrays and various other types of collctions.
         {
             _students = students;
 
