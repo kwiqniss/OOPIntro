@@ -93,10 +93,14 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
             // the question mark makes sure args was provided and isn't null before we try to access its Length property.
             // Separately, maybe there is a way we could do this using .Any() instead of comparing length? We'd still need to make sure args isn't null first though.
+            // comparable to:
+            //   if (args != null && args.Length > 0)
             if (args?.Length > 0) 
             {
                 versionToCall = ConvertUserInputToVersion(args[0]);
             }
+
+            
 
             if (versionToCall == VersionToCall.Unknown)
             {
