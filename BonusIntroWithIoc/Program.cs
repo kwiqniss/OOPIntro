@@ -72,6 +72,18 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             CallSpecifiedVersion(versionToCall);
         }
 
+        private static void MainV2()
+        {
+            IReceiveInstruction[] students = new Student[]
+            {
+                new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD"),
+                new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes)
+            };
+
+            IInstruct instructor = new InstructorV2("Robert", "Singer", 185, RobertsEyes, students, "Bobby");
+            instructor.Instruct(INSTRUCTOR_MESSAGE);
+        }
+
         private static VersionToCall DetermineVersionToCall(string userPrompt, string[]? args = null) // by using the ? here, we can use null as default instead of an empty array.
         {
             var versionToCall = VersionToCall.Unknown;
@@ -107,38 +119,6 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             
             return VersionToCall.Unknown;
         }
-
-        /// <summary>
-        /// unused. See the version of this method that uses a do/while loop instead of a while loop.
-        /// </summary>
-        /// <param name="userPrompt">This will be the prompt displayed to the user.</param>
-        /// <returns>The input from the user, after it's confirmed to be valid</returns>
-        /// <exception cref="ArgumentException"></exception>
-        //private static VersionToCall GetValidVersionInputFromUserWithWhile(string userPrompt)
-        //{
-        //    if (string.IsNullOrWhiteSpace(userPrompt))
-        //    {
-        //        throw new ArgumentException("userPrompt cannot be null, empty, or whitespace.", nameof(userPrompt));
-        //    }
-
-        //    var versionToCall = VersionToCall.Unknown; // this is the variable we'll return at the end of the method. We update it from within the while loop.
-        //    var userInput = string.Empty;
-        //    var loopCounter = 0;
-        //    while (versionToCall == VersionToCall.Unknown)
-        //    {
-        //        if (loopCounter > 0)
-        //        {
-        //            Console.WriteLine("Invalid input. Please try again.");
-        //        }
-        //        Console.WriteLine(userPrompt);
-        //        userInput = Console.ReadLine();
-        //        versionToCall = ConvertUserInputToVersion(userInput);
-
-        //        loopCounter++;
-        //    } 
-
-        //    return versionToCall; 
-        //}
 
         /// <summary>
         /// We know we're going to prompt the user at least once, so we can use a do/while loop instead of a while loop to indicate that.
@@ -208,18 +188,6 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             //}
         }
 
-        private static void MainV2() 
-        {
-            IReceiveInstruction[] students = new Student[]
-            {
-                new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD"),
-                new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes)
-            };
-            
-            IInstruct instructor = new InstructorV2("Robert", "Singer", 185, RobertsEyes, students, "Bobby");
-            instructor.Instruct(INSTRUCTOR_MESSAGE);
-        }
-
         private static void MainV1()
         {
             var people = new IAmAPerson[]
@@ -264,5 +232,37 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
                 s.InstructionInProgress(INSTRUCTOR_MESSAGE);
             }
         }
+
+        /// <summary>
+        /// unused. See the version of this method that uses a do/while loop instead of a while loop.
+        /// </summary>
+        /// <param name="userPrompt">This will be the prompt displayed to the user.</param>
+        /// <returns>The input from the user, after it's confirmed to be valid</returns>
+        /// <exception cref="ArgumentException"></exception>
+        //private static VersionToCall GetValidVersionInputFromUserWithWhile(string userPrompt)
+        //{
+        //    if (string.IsNullOrWhiteSpace(userPrompt))
+        //    {
+        //        throw new ArgumentException("userPrompt cannot be null, empty, or whitespace.", nameof(userPrompt));
+        //    }
+
+        //    var versionToCall = VersionToCall.Unknown; // this is the variable we'll return at the end of the method. We update it from within the while loop.
+        //    var userInput = string.Empty;
+        //    var loopCounter = 0;
+        //    while (versionToCall == VersionToCall.Unknown)
+        //    {
+        //        if (loopCounter > 0)
+        //        {
+        //            Console.WriteLine("Invalid input. Please try again.");
+        //        }
+        //        Console.WriteLine(userPrompt);
+        //        userInput = Console.ReadLine();
+        //        versionToCall = ConvertUserInputToVersion(userInput);
+
+        //        loopCounter++;
+        //    } 
+
+        //    return versionToCall; 
+        //}
     }
 }
