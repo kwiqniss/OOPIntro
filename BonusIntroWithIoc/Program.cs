@@ -4,6 +4,7 @@
 using OopIntroLib.Instructor; 
 using OopIntroLib.PersonComponents;
 using OopIntroLib.Student;
+using System.Drawing;
 
 namespace IntroWithAbstractClass
 {
@@ -16,20 +17,22 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
         private readonly static Eye[] JanesEyes = new Eye[]
         {
-            new Eye(System.Drawing.Color.Brown, 24, 32, Position.Left),
-            new Eye(System.Drawing.Color.Brown, 24, 32, Position.Right)
+            new Eye(Color.Brown, 24, 32, Position.Left),
+            new Eye(System.Drawing.Color.Brown, 24, 32, Position.Right) // it's redundant for us to specify the namespace as System.Drawing here since we have the using statement at the start of the file. If you had more than one object named Color in different namespaces, then you'd need to specify which one you meant.
         };
 
-        private readonly static Eye[] SamuelsEyes = new Eye[]
+        // because we know this will be an Eye[] from the assignment, and since it's using an initializer for a collection of Eye objects,
+        // the compiler knows the type that's being created and can remove the "new Eye[]" part of the declaration and initialization of the array.
+        private readonly static Eye[] SamuelsEyes = 
         {
-            new Eye(System.Drawing.Color.Green, 25, 33, Position.Left),
-            new Eye(System.Drawing.Color.Green, 25, 33, Position.Right)
+            new Eye(Color.Green, 25, 33, Position.Left),
+            new Eye(Color.Green, 25, 33, Position.Right)
         };
 
-        private readonly static Eye[] RobertsEyes = // because we know the types in the collection, we know the type that's being created and can remove the "new Eye[]" part of the declaration and initialization of the array.
+        private readonly static Eye[] RobertsEyes = 
         {
-            new Eye(System.Drawing.Color.Blue, 26, 34, Position.Left),
-            new Eye(System.Drawing.Color.Blue, 26, 34, Position.Right)
+            new Eye(Color.Blue, 26, 34, Position.Left),
+            new Eye(Color.Blue, 26, 34, Position.Right)
         };
 
         /// <summary>
