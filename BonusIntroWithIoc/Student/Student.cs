@@ -19,7 +19,7 @@ namespace BonusIntroWithIoc.Student
             }
         }
 
-        public Student(string firstName, string lastName, int heightInCm, GradeLevel gradeLevel, Eye[] eyes, string nickName = "") : base(firstName, lastName, heightInCm, eyes, nickName)
+        public Student(string firstName, string lastName, int heightInCm, GradeLevel gradeLevel, Eye[] eyes, string? nickName = "") : base(firstName, lastName, heightInCm, eyes, nickName)
         {
             this.GradeLevel = gradeLevel;
         }

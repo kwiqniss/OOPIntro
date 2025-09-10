@@ -5,7 +5,7 @@ namespace BonusIntroWithIoc.Instructor
 {
     public class InstructorV1 : Person, IInstruct
     {
-        public InstructorV1(string firstName, string lastName, int heightInCm, Eye[] eyes, string nickName = "") : base(firstName, lastName, heightInCm, eyes, nickName) { }
+        public InstructorV1(string firstName, string lastName, int heightInCm, Eye[] eyes, string? nickName = null) : base(firstName, lastName, heightInCm, eyes, nickName) { }
 
         public override string FullName => $"{FirstName} {LastName}";
 

@@ -41,6 +41,9 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
         static void Main(string[] args)
         {
+            //Console.WriteLine("Hello " + Person.Genus + " " + Person.Species);
+            Console.WriteLine($"Hello { Person.Genus } { Person.Species }");
+
             //var userWantsToGoAgain = false; // we could've tracked whether the user wants to go again by assigning to this variable each loop, but there's no need to create a variable for this when we can simply place the condition in the while statement.
             do
             {
@@ -204,7 +207,6 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
         private static void MainV2() 
         {
-            Console.WriteLine("Hello " + Person.Genus + " " + Person.Species);
             var students = new Student[]
             {
                 new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD"),
@@ -220,7 +222,6 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
         /// </summary>
         private static void MainV1()
         {
-            Console.WriteLine("Hello " + Person.Genus + " " + Person.Species);
             var people = new IAmAPerson[]
             {
                 new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD"),
