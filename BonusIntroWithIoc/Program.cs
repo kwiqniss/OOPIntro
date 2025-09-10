@@ -220,9 +220,6 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             instructor.Instruct(INSTRUCTOR_MESSAGE);
         }
 
-        /// <summary>
-        /// Shows an array of IAmAPerson objects that contains Students and Instructors.
-        /// </summary>
         private static void MainV1()
         {
             var people = new IAmAPerson[]
