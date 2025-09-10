@@ -83,7 +83,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
                     break;
             }
 
-            //// this is an if / else if / if statement. 
+            //// this is an if / else if / if statement. It's not as clean as the switch statement above, but it works the same.
             //if (versionToCall == VersionToCall.V1)
             //{
             //    MainV1();
