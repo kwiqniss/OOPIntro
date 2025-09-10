@@ -61,6 +61,18 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             Console.Read();
         }
 
+        private static void MainV2()
+        {
+            IReceiveInstruction[] students = new Student[]
+            {
+                new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD"),
+                new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes)
+            };
+
+            IInstruct instructor = new InstructorV2("Robert", "Singer", 185, RobertsEyes, students, "Bobby");
+            instructor.Instruct(INSTRUCTOR_MESSAGE);
+        }
+
         internal static void CallSpecifiedVersion(VersionToCall versionToCall)
         {
             // since we're simply comparing a set of strings, enums, ints... to a set of available options, we can use a switch statements instead of if/else if/else.
@@ -91,18 +103,6 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             //{
             //    Console.WriteLine("No valid version selected.");
             //}
-        }
-
-        private static void MainV2()
-        {
-            IReceiveInstruction[] students = new Student[]
-            {
-                new Student("Jane", "Doe", 170, GradeLevel.Sophomore, JanesEyes, "JD"),
-                new Student("Samuel", "Winchester", 193, GradeLevel.Freshman, SamuelsEyes)
-            };
-
-            IInstruct instructor = new InstructorV2("Robert", "Singer", 185, RobertsEyes, students, "Bobby");
-            instructor.Instruct(INSTRUCTOR_MESSAGE);
         }
 
         private static void MainV1()
