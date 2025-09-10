@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace BonusIntroWithIoc.PersonComponents
+namespace OopIntroLib.PersonComponents
 {
     public enum Position
     {

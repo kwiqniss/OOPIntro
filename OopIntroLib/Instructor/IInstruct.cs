@@ -1,6 +1,6 @@
-﻿using BonusIntroWithIoc.Student;
+﻿using OopIntroLib.Student;
 
-namespace BonusIntroWithIoc.Instructor
+namespace OopIntroLib.Instructor
 {
     public interface IInstruct
     {

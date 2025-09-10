@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace BonusIntroWithIoc.PersonComponents
+namespace OopIntroLib.PersonComponents
 {
     public interface IAmAPerson
     {

@@ -1,6 +1,6 @@
-﻿using BonusIntroWithIoc.PersonComponents;
+﻿using OopIntroLib.PersonComponents;
 
-namespace BonusIntroWithIoc.Student
+namespace OopIntroLib.Student
 {
     public class Student : Person, IReceiveInstruction
     {

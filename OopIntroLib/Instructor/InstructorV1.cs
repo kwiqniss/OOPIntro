@@ -1,7 +1,7 @@
-﻿using BonusIntroWithIoc.PersonComponents;
-using BonusIntroWithIoc.Student;
+﻿using OopIntroLib.PersonComponents;
+using OopIntroLib.Student;
 
-namespace BonusIntroWithIoc.Instructor
+namespace OopIntroLib.Instructor
 {
     public class InstructorV1 : Person, IInstruct
     {

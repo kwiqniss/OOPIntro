@@ -1,4 +1,4 @@
-﻿namespace BonusIntroWithIoc.Student
+﻿namespace OopIntroLib.Student
 {
     public interface IReceiveInstruction
     {
