@@ -1,6 +1,6 @@
 ﻿// this BonusIntroWithIocAndProjRef project uses a project ref to include the classes from our OopIntroLib project.
 // Right click a project to add references to other projects. The OopIntroLib is a class library project rather than a console app.
-// Class libraries produce a DLL rather than an EXE like a console app does..
+// Class libraries produce a DLL rather than an EXE like a console app does... This program is an exe. The library is a DLL.
 using BonusIntroWithIocAndProjRef;
 using OopIntroLib.Instructor; 
 using OopIntroLib.PersonComponents;
