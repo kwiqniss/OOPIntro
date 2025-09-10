@@ -100,8 +100,6 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
                 versionToCall = ConvertUserInputToVersion(args[0]);
             }
 
-            
-
             if (versionToCall == VersionToCall.Unknown)
             {
                 versionToCall = GetValidVersionInputFromUser(userPrompt);
