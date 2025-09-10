@@ -45,7 +45,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
             //var userWantsToGoAgain = false; // we could've tracked whether the user wants to go again by assigning to this variable each loop, but there's no need to create a variable for this when we can simply place the condition in the while statement.
             do
             {
-                CallSpecifiedVersion(
+                CallSpecifiedVersion( // call the following DetermineVersionToCall method and provide the results as an argument to the CallSpecifiedVersion method.
                     VersionHandler.DetermineVersionToCall("Please enter the version to call (v1 or v2): ", args));
 
                 Console.WriteLine("Want to go again? y/n");
